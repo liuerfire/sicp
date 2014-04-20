@@ -1,0 +1,22 @@
+;; 行，列都从0开始
+(define (pascal row col)
+  (cond ((> col row)
+         (error "unvalid col value"))
+        ((or (= col 0) (= row col))
+         1)
+        (else (+ (pascal (- row 1) (- col 1))
+                 (pascal (- row 1) col)))))
+
+
+(display (pascal 2 1))
+(display "\n")
+(display (pascal 3 2))
+(display "\n")
+(display (pascal 4 2))
+(display "\n")
+(display (pascal 4 3))
+(display "\n")
+(display (pascal 5 2))
+(display "\n")
+(display (pascal 5 3))
+(display "\n")
