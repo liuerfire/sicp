@@ -11,6 +11,11 @@
                (filter predicate (cdr seq))))
         (else (filter predicate (cdr seq)))))
 
+(define (accumulate op initial seq)
+  (if (null? seq) initial
+      (op (car seq)
+	  (accumulate op initial (cdr seq)))))
+
 (display (map (lambda (x) (* x x)) (list 1 2 3 4)))
 (newline)
 (display (filter odd? (list 1 2 3 4 5)))
