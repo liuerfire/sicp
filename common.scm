@@ -16,7 +16,16 @@
     (op (car seq)
         (accumulate op initial (cdr seq)))))
 
-(display (map (lambda (x) (* x x)) (list 1 2 3 4)))
-(newline)
-(display (filter odd? (list 1 2 3 4 5)))
-(newline)
+(define (accumulate-n op init seqs)
+  (if (null? (car seqs))
+    '()
+    (cons (accumulate op init (map car seqs))
+          (accumulate-n op init (map cdr seqs)))))
+
+(define (fold-left op initial sequence)
+  (define (iter result rest)
+    (if (null? rest)
+      result
+      (iter (op result (car rest))
+            (cdr rest))))
+  (iter initial sequence))
