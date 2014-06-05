@@ -1,3 +1,6 @@
+(define (prime? n)
+  (if (= (remainder n 2) 0) #f #t))
+
 (define (map proc items)
   (if (null? items)
     '()
