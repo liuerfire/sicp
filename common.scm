@@ -32,3 +32,11 @@
       (iter (op result (car rest))
             (cdr rest))))
   (iter initial sequence))
+
+(define (enumerate-interval i j)
+  (if (> i j)
+    '()
+    (cons i (enumerate-interval (+ 1 i) j))))
+
+(define (flatmap proc seq)
+  (accumulate append '() (map proc seq)))
