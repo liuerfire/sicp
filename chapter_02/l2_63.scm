@@ -1,10 +1,4 @@
-(define (entry tree) (car tree))
-(define (left-branch tree) (cadr tree))
-(define (right-branch tree) (caddr tree))
-
-(define (make-tree entry left right)
-  (list entry left right))
-
+(load "tree.scm")
 (define (tree->list-1 tree)
   (if (null? tree)
     '()
@@ -20,3 +14,10 @@
                     (cons (entry tree)
                           (copy-to-list (right-branch tree) result-list)))))
   (copy-to-list tree '()))
+
+(define t (adjoin-set 1 '(2 () ())))
+(define t (adjoin-set 3 t))
+(display (tree->list-1 t))
+(newline)
+(display (tree->list-2 t))
+(newline)
